@@ -1,0 +1,145 @@
+// Colors
+$mainBg: hsl(233, 47%, 7%);
+$cardBg: hsl(244, 38%, 16%);
+$accentColor: hsl(277, 64%, 61%);
+$white: hsl(0, 0%, 100%);
+$text: hsla(0, 0%, 100%, 0.75);
+$statHeading: hsla(0, 0%, 100%, 0.6);
+$overlay: hsl(277, 89%, 26%);
+
+// Media
+$mobile: 375px;
+$desktop: 1440px;
+
+// Fonts
+$Inter: 'inter', sans-serif;
+$Lexand: 'Lexend Deca', sans-serif;
+
+* {
+  box-sizing: border-box;
+  font-family: $Inter;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-size: 15px;
+  background-color: $mainBg;
+
+  display: grid;
+  place-items: center;
+
+  .highlight {
+    color: $accentColor;
+  }
+
+  p {
+    color: $text;
+    font-size: 1rem;
+  }
+}
+
+main {
+  display: flex;
+  flex-direction: column-reverse;
+  width: 90%;
+  max-width: 1110px;
+  margin: 5rem auto;
+  background-color: $cardBg;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  @media (min-width: $desktop) {
+    flex-direction: row;
+    margin: auto;
+  }
+}
+
+section {
+  color: $white;
+  @media (min-width: $desktop) {
+    width: 50%;
+  }
+  &.content {
+    text-align: center;
+    padding: 2rem 1rem;
+    @media (min-width: $desktop) {
+      text-align: left;
+      padding: 2rem 2rem 2rem 4rem;
+    }
+    h1 {
+      font-size: 1.8rem;
+      @media (min-width: $desktop) {
+        font-size: 2rem;
+      }
+    }
+    h1,
+    p {
+      max-width: 90%;
+      display: inline-block;
+      margin: inherit auto;
+      @media (min-width: $desktop) {
+        max-width: unset;
+      }
+    }
+    p {
+      margin-top: 0;
+      line-height: 1.75;
+    }
+
+    .stats {
+      margin: 2rem;
+      @media (min-width: $desktop) {
+        margin: 2rem 0;
+        display: flex;
+      }
+      div {
+        @media (min-width: $desktop) {
+          &:not(:last-of-type) {
+            margin-right: 1rem;
+          }
+        }
+        h3 {
+          font-size: 1.5rem;
+          margin-bottom: 0.7rem;
+          @media (min-width: $desktop) {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+          }
+        }
+        span {
+          text-transform: uppercase;
+          color: $statHeading;
+          letter-spacing: 1px;
+          @media (min-width: $desktop) {
+            font-size: 0.75rem;
+          }
+        }
+      }
+    }
+  }
+
+  &.image {
+    background-image: url('../images/image-header-mobile.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 250px;
+    position: relative;
+    @media (min-width: 700px) {
+      background-color: url('../images/image-header-desktop.jpg');
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 10;
+      background-color: $overlay;
+      opacity: 0.6;
+      filter: brightness(1.15);
+    }
+  }
+}
